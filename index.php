@@ -23,7 +23,7 @@ require_once 'bootstraps.php';
         return;
     }
     $error = null;
-    $result  = null;
+    $result = null;
     try {
         $url = $_GET['url'];
 //init gateway
@@ -31,7 +31,7 @@ require_once 'bootstraps.php';
 
 //get shop service depend on user url
         $shopService = $gateWay->getShopService($url);
-        if(!$shopService){
+        if (!$shopService) {
             throw new Exception('This domain is not our partner.');
         }
 //get product detail
@@ -41,36 +41,36 @@ require_once 'bootstraps.php';
     }
     if ($error) {
         echo "<h2 style='color: red'>$error</h2>";
-    }
-    ?>
+    } else {
+        ?>
 
-    <?php if ($result && $result['name']) { ?>
-        <h4><?php echo $result['name'] ?></h4>
-    <?php } ?>
+        <?php if ($result && $result['name']) { ?>
+            <h4><?php echo $result['name'] ?></h4>
+        <?php } ?>
 
-    <?php if ($result && $result['price']) { ?>
-        <p>Price: <?php echo round($result['price'], 2) ?>$</p>
-    <?php } ?>
+        <?php if ($result && $result['price']) { ?>
+            <p>Price: <?php echo round($result['price'], 2) ?>$</p>
+        <?php } ?>
 
-    <?php if ($result && $result['shipping_fee']) { ?>
-        <p>Shipping fee: <?php echo round($result['shipping_fee'], 2) ?>$</p>
-    <?php } ?>
+        <?php if ($result && $result['shipping_fee']) { ?>
+            <p>Shipping fee: <?php echo round($result['shipping_fee'], 2) ?>$</p>
+        <?php } ?>
 
-    <?php if ($result && $result['type']) { ?>
-        <p>Product type (random): <?php echo $result['type'] ?></p>
-    <?php } ?>
-
-    <?php if ($result && $result['attributes']) { ?>
-        <table>
-            <tbody>
-            <?php foreach ($result['attributes'] as $key => $value) { ?>
-                <tr>
-                    <td width="50%"><b><?php echo $key; ?></b></td>
-                    <td><?php echo $value; ?></td>
-                </tr>
-            <?php } ?>
-            </tbody>
-        </table>
+        <?php if ($result && $result['type']) { ?>
+            <p>Product type (random): <?php echo $result['type'] ?></p>
+        <?php } ?>
+        <?php if ($result && $result['attributes']) { ?>
+            <table>
+                <tbody>
+                <?php foreach ($result['attributes'] as $key => $value) { ?>
+                    <tr>
+                        <td width="50%"><b><?php echo $key; ?></b></td>
+                        <td><?php echo $value; ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+        <?php } ?>
     <?php } ?>
 
 </div>

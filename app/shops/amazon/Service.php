@@ -26,11 +26,16 @@ class Service implements ShopService
         $parser = new ProductParser($html);
         $attributes = $parser->getAttributes();
         $productType = $parser->getProductType();
+        $name = $parser->getProductName();
+        $price = $parser->getProductPrice();
+        if(!$price){
+            throw new \Exception('Are you sure this url is for product detail!');
+        }
         //Calculate shipping fee
         $shippingFee = new ShippingFee($attributes, $productType);
         return [
-            'name' => $parser->getProductName()
-            , 'price' => $parser->getProductPrice()
+            'name' => $name
+            , 'price' => $price
             , 'type' => $productType
             , 'attributes' => $attributes
             , 'shipping_fee' => $shippingFee->getPrice()
