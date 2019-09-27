@@ -1,0 +1,22 @@
+{
+  "name": "nvmphuong/demo-amazon",
+  "description": "A demo for get amazon product data.",
+  "license": "MIT",
+  "type": "project",
+  "require": {
+  },
+  "autoload": {
+    "files": [
+      "app/functions.php"
+    ],
+    "psr-4": {
+      "App\\": "app/"
+    },
+    "classmap": [
+      "app/"
+    ]
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.3"
+  }
+}
