@@ -7,8 +7,7 @@
  */
 return [
     /**
-     * Current we only support shipping fee for kg and m3
-     * Another unit will be convert to kg and m3
+     * Mapping shop domain with service
      */
     'www.amazon.com' => \App\Shops\Amazon\Service::class
     , 'amazon.com' => \App\Shops\Amazon\Service::class
